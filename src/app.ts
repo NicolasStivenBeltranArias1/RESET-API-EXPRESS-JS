@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import userRoutes from './routes/user.routes'; // Importar el router de usuarios
 
 const app = express();
 
@@ -14,5 +15,8 @@ app.get('/api/v1/health', (req: Request, res: Response) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// Montar el Módulo de Gestión de Usuarios
+app.use('/api/v1/users', userRoutes);
 
 export default app;
